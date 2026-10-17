@@ -105,4 +105,5 @@ The chrome matches AetherForge.
 
 ## Changelog
 
+- 2026-10-17 — Plan text repeats the arguments in the configuration. Computed values stay marked known after apply.
 - 2026-10-17 — First room: static export, nine lessons, in-browser checks, written plans, three architecture views, and summary pages. GitHub Pages serves `https://jmaret.github.io/Groma/`.

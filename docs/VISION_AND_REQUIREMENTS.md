@@ -74,4 +74,5 @@ A visitor can read the language page, open a lesson, answer a check, see whether
 
 ## Changelog
 
+- 2026-10-17 — A plan repeats the arguments written in the configuration. `id` is the line the plan adds.
 - 2026-10-17 — First room. Nine lessons, in-browser checks, written plans, and GitHub Pages at `https://jmaret.github.io/Groma/`.
