@@ -1,5 +1,9 @@
 # Releases
 
+## 0.1.1 — 2026-10-17
+
+- Each configuration now writes the arguments its plan repeats. `separator`, and the file permissions on the marker, are in the block. `id` stays the line the plan adds, because the provider fills it in at apply.
+
 ## 0.1.0 — 2026-10-17
 
 - First room. Nine lessons run from a root module through the graph, plan, state, and a data source.

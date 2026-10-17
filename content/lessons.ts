@@ -58,11 +58,12 @@ export const lessons: Lesson[] = [
       "A Terraform configuration is a description of what should exist. Terraform reads the whole file, then decides what to create. It does not run the lines from the top the way a shell script does.",
     code: hcl(`
       resource "random_pet" "camp" {
-        length = 2
+        length    = 2
+        separator = "-"
       }
     `),
     notice:
-      "The directory that holds this file is the root module. One resource block is enough for a first plan. The next lesson names the provider that owns random_pet.",
+      "length and separator are the arguments in the block, and the plan repeats them. id is the one line the plan adds. The provider chooses it during apply, so that line says known after apply. The directory that holds this file is the root module.",
     plan: petPlan,
     checks: [
       {
@@ -108,11 +109,12 @@ export const lessons: Lesson[] = [
       }
 
       resource "random_pet" "camp" {
-        length = 2
+        length    = 2
+        separator = "-"
       }
     `),
     notice:
-      "source is the address on the public registry. ~> 3.6 allows 3.6.0 and later 3.x releases, and it refuses 4.0.0.",
+      "source is the address on the public registry. ~> 3.6 allows 3.6.0 and later 3.x releases, and it refuses 4.0.0. The resource arguments are the same as the previous lesson, and the plan repeats them.",
     plan: petPlan,
     checks: [
       {
@@ -204,7 +206,8 @@ export const lessons: Lesson[] = [
       }
 
       resource "random_pet" "camp" {
-        length = var.length
+        length    = var.length
+        separator = "-"
       }
 
       locals {
@@ -212,7 +215,7 @@ export const lessons: Lesson[] = [
       }
     `),
     notice:
-      "var.length reads the input. With no other value, the default 2 is what the plan uses. marker is computed from the pet's id, so it cannot exist before the pet does. It still is not a resource.",
+      "separator is written as a hyphen, and the plan repeats it. var.length reads the input. With no other value, the default 2 is what the plan uses for length. marker is computed from the pet's id, so it cannot exist before the pet does. It still is not a resource.",
     plan: hcl(`
       Terraform will perform the following actions:
 
@@ -263,7 +266,8 @@ export const lessons: Lesson[] = [
       "An output publishes a value from the module. Callers, the CLI, and other modules can read it. The pet's id does not exist until apply, so the plan says the output will be known then.",
     code: hcl(`
       resource "random_pet" "camp" {
-        length = 2
+        length    = 2
+        separator = "-"
       }
 
       output "camp_name" {
@@ -335,16 +339,19 @@ export const lessons: Lesson[] = [
       }
 
       resource "random_pet" "camp" {
-        length = 2
+        length    = 2
+        separator = "-"
       }
 
       resource "local_file" "marker" {
-        filename = "camp-name.txt"
-        content  = random_pet.camp.id
+        filename             = "camp-name.txt"
+        content              = random_pet.camp.id
+        file_permission      = "0777"
+        directory_permission = "0777"
       }
     `),
     notice:
-      "content = random_pet.camp.id is the edge. local_file.marker depends on random_pet.camp. Terraform, not the order of the text, walks that edge.",
+      "content = random_pet.camp.id is the edge. local_file.marker depends on random_pet.camp. Terraform, not the order of the text, walks that edge. filename and the two permissions are written in the block, so the plan repeats them. content and id stay known after apply, because they depend on the pet.",
     aside:
       "hashicorp/local writes a file on the machine where Terraform runs. It does not need a cloud account. The examples earlier on this page are the same kind of provider.",
     plan: hcl(`
@@ -406,11 +413,12 @@ export const lessons: Lesson[] = [
       "terraform plan compares the description with what already exists and prints a proposal. terraform apply is the command that carries the proposal out. This page stops at the proposal.",
     code: hcl(`
       resource "random_pet" "camp" {
-        length = 2
+        length    = 2
+        separator = "-"
       }
     `),
     notice:
-      "A plan is allowed to say create, change, or destroy. Those words are a preview. Nothing is created until apply. The closing line counts the actions.",
+      "A plan is allowed to say create, change, or destroy. Those words are a preview. Nothing is created until apply. The plan repeats length and separator. The closing line counts the actions. id is still known after apply.",
     aside:
       "Groma shows a plan that was written for this lesson. It does not run Terraform, it does not run apply, and it does not ask for credentials.",
     plan: hcl(`
@@ -460,11 +468,12 @@ export const lessons: Lesson[] = [
       "After apply, Terraform records the objects in terraform.tfstate. The next plan compares the configuration with that memory. If they agree, the plan is empty.",
     code: hcl(`
       resource "random_pet" "camp" {
-        length = 2
+        length    = 2
+        separator = "-"
       }
     `),
     notice:
-      "The configuration does not store the generated id. State does. A later plan uses that memory to tell a create from a change from a no-op.",
+      "The configuration stores length and separator. It does not store the generated id. State does. A later plan uses that memory to tell a create from a change from a no-op.",
     aside:
       "State can hold secrets that the provider returned. Do not commit terraform.tfstate. This website never receives a state file.",
     plan: hcl(`
@@ -534,7 +543,7 @@ export const lessons: Lesson[] = [
       }
     `),
     notice:
-      "data.local_file.marker reads a file. If the earlier local_file resource created camp-name.txt, this block can read it. If the file is missing, apply stops. The data source will not create the file to recover.",
+      "filename is the argument you wrote, and the plan repeats it. content and id are what the read fills in, so those two lines say known after apply. If the earlier local_file resource created camp-name.txt, this block can read it. If the file is missing, apply stops. The data source will not create the file to recover.",
     aside:
       "The random and local examples on this page can be run later with Terraform and no cloud account. The bucket below is not one of those examples.",
     plan: hcl(`
