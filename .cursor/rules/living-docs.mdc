@@ -1,0 +1,30 @@
+---
+description: Keep vision, architecture, and the changelog current on every change.
+alwaysApply: true
+---
+
+# Living docs
+
+A change is not done until these three files match the code. Update them in the same work as the implementation — not later.
+
+| Document | Path | Update when |
+| --- | --- | --- |
+| Vision and requirements | `docs/VISION_AND_REQUIREMENTS.md` | Goals, users, scope, or acceptance change |
+| Architecture and design | `docs/ARCHITECTURE_AND_DESIGN.md` | Routes, checks, the written plan, hosting, or visual system change |
+| Releases | `CHANGELOG.md` | Something ships that a visitor can see |
+
+The in-app pictures live in `src/components/architecture/Diagrams.tsx`. When a view changes, update that SVG and the matching Mermaid block in the architecture document together.
+
+`/vision` and `/architecture` render the `## Summary` section of each document. If the summary is wrong, the page is wrong. `/releases` renders the changelog.
+
+## Every change
+
+1. Read the three docs before editing.
+2. Implement the code.
+3. Patch the docs: revise the affected requirement or decision, refresh the Summary if a visitor would notice, and add a dated changelog line (`YYYY-MM-DD`).
+4. Do not invent a fourth product doc.
+
+```text
+BAD: ship a lesson or a route and leave the documents stale
+GOOD: the same change updates the requirement and the release note
+```

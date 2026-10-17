@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="">
+  <rect width="1600" height="1000" fill="#0C3D4A"/>
+  <g stroke="#E6CA98" stroke-width="1" opacity="0.18">
+    <path d="M0 80H1600M0 160H1600M0 240H1600M0 320H1600M0 400H1600M0 480H1600M0 560H1600M0 640H1600M0 720H1600M0 800H1600M0 880H1600"/>
+    <path d="M80 0V1000M160 0V1000M240 0V1000M320 0V1000M400 0V1000M480 0V1000M560 0V1000M640 0V1000M720 0V1000M800 0V1000M880 0V1000M960 0V1000M1040 0V1000M1120 0V1000M1200 0V1000M1280 0V1000M1360 0V1000M1440 0V1000M1520 0V1000"/>
+  </g>
+  <g stroke="#F6EAD8" stroke-width="1.4" fill="none" opacity="0.55">
+    <path d="M120 180H420M120 180V480"/>
+    <path d="M1180 160H1480M1480 160V460"/>
+    <path d="M140 760H460M140 760V920"/>
+    <path d="M1160 740H1460M1460 740V940"/>
+  </g>
+  <g fill="#E6CA98" opacity="0.8">
+    <rect x="108" y="168" width="24" height="24"/>
+    <rect x="408" y="168" width="24" height="24"/>
+    <rect x="108" y="468" width="24" height="24"/>
+    <rect x="1168" y="148" width="24" height="24"/>
+    <rect x="1468" y="148" width="24" height="24"/>
+    <rect x="1468" y="448" width="24" height="24"/>
+    <rect x="128" y="748" width="24" height="24"/>
+    <rect x="448" y="748" width="24" height="24"/>
+    <rect x="128" y="908" width="24" height="24"/>
+    <rect x="1148" y="728" width="24" height="24"/>
+    <rect x="1448" y="728" width="24" height="24"/>
+    <rect x="1448" y="928" width="24" height="24"/>
+  </g>
+  <g stroke="#F6EAD8" fill="none" opacity="0.9">
+    <path d="M800 250 V430" stroke-width="3"/>
+    <path d="M680 310 H920" stroke-width="3"/>
+    <path d="M680 310 V390" stroke-width="1.6"/>
+    <path d="M920 310 V390" stroke-width="1.6"/>
+    <circle cx="680" cy="398" r="7" fill="#F6EAD8" stroke="none"/>
+    <circle cx="920" cy="398" r="7" fill="#F6EAD8" stroke="none"/>
+    <circle cx="800" cy="310" r="8" fill="#E6CA98" stroke="#F6EAD8" stroke-width="2"/>
+  </g>
+  <g fill="#F6EAD8" opacity="0.45" font-family="Georgia, 'Times New Roman', serif" font-size="22">
+    <text x="96" y="150">N</text>
+    <text x="430" y="150">E</text>
+    <text x="96" y="530">W</text>
+    <text x="1360" y="140">I</text>
+    <text x="1488" y="140">II</text>
+  </g>
+</svg>
